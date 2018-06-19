@@ -58,7 +58,7 @@ namespace Stock
 
                 //Reading Data
                 LoadData();
-                ResetRecords(); 
+                ResetRecords();
             }
         }
 
@@ -72,7 +72,8 @@ namespace Stock
             else
                 return false;
         }
-        public void LoadData() {
+        public void LoadData()
+        {
             SqlConnection con = Connection.GetConnection();
             SqlDataAdapter sda = new SqlDataAdapter("Select * From [Stock].[dbo].[Products]", con);
             DataTable dt = new DataTable();
@@ -111,27 +112,31 @@ namespace Stock
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            if (Validation())
-            {
-                SqlConnection con = Connection.GetConnection();
-                var sqlQuery = "";
-                if (IfProductsExists(con, textBox1.Text))
-                {
-                    con.Open();
-                    sqlQuery = @"DELETE FROM [Products] WHERE [ProductCode] = '" + textBox1.Text + "'";
-                    SqlCommand cmd = new SqlCommand(sqlQuery, con);
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Record Not Exists...!");
-                }
-                //Reading Data
-                LoadData();
-                ResetRecords();
-            }
+            
+			  DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Delete", "Message", MessageBoxButtons.YesNo);
+              if (dialogResult == DialogResult.Yes)
+              {
+                  if (Validation())
+                  {
+                      SqlConnection con = Connection.GetConnection();
+                      var sqlQuery = "";
+                      if (IfProductsExists(con, textBox1.Text))
+                      {
+                          con.Open();
+                          sqlQuery = @"DELETE FROM [Products] WHERE [ProductCode] = '" + textBox1.Text + "'";
+                          SqlCommand cmd = new SqlCommand(sqlQuery, con);
+                          cmd.ExecuteNonQuery();
+                          con.Close();
+                      }
+                      else
+                      {
+                          MessageBox.Show("Record Not Exists...!");
+                      }
+                      //Reading Data
+                      LoadData();
+                      ResetRecords();
+                  }
+              }
         }
 
         private void ResetRecords()
@@ -151,7 +156,22 @@ namespace Stock
         private bool Validation()
         {
             bool result = false;
-            if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrEmpty(textBox2.Text) && comboBox1.SelectedIndex > -1)
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(textBox1, "Product Code Required");
+            }
+            else if (string.IsNullOrEmpty(textBox2.Text))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(textBox2, "Product Name Required");
+            }
+            else if (comboBox1.SelectedIndex == -1)
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(comboBox1, "Select Status");
+            }
+            else
             {
                 result = true;
             }
