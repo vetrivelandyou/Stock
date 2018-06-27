@@ -50,6 +50,21 @@ namespace Stock
             stk.Show();
         }
 
+        private void productListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportForm.ProductsReport prod = new ReportForm.ProductsReport();
+            prod.MdiParent = this;
+            prod.StartPosition = FormStartPosition.CenterScreen;
+            prod.Show();
+        }
+
+        private void stockListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportForm.StockReport prod = new ReportForm.StockReport();
+            prod.MdiParent = this;
+            prod.StartPosition = FormStartPosition.CenterScreen;
+            prod.Show();
+        }       
     }
 }
 

@@ -34,6 +34,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgSno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgProCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,12 +54,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dgSno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgProCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgProName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -119,6 +119,37 @@
             this.dataGridView1.TabIndex = 16;
             this.dataGridView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDoubleClick);
             // 
+            // dgSno
+            // 
+            this.dgSno.HeaderText = "S.No";
+            this.dgSno.Name = "dgSno";
+            // 
+            // dgProCode
+            // 
+            this.dgProCode.HeaderText = "Product Code";
+            this.dgProCode.Name = "dgProCode";
+            // 
+            // dgProName
+            // 
+            this.dgProName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgProName.HeaderText = "Product Name";
+            this.dgProName.Name = "dgProName";
+            // 
+            // dgQuantity
+            // 
+            this.dgQuantity.HeaderText = "Quantity";
+            this.dgQuantity.Name = "dgQuantity";
+            // 
+            // dgDate
+            // 
+            this.dgDate.HeaderText = "Date";
+            this.dgDate.Name = "dgDate";
+            // 
+            // dgStatus
+            // 
+            this.dgStatus.HeaderText = "Status";
+            this.dgStatus.Name = "dgStatus";
+            // 
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -135,6 +166,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(141, 25);
             this.textBox1.TabIndex = 13;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
@@ -254,42 +286,11 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // dgSno
-            // 
-            this.dgSno.HeaderText = "S.No";
-            this.dgSno.Name = "dgSno";
-            // 
-            // dgProCode
-            // 
-            this.dgProCode.HeaderText = "Product Code";
-            this.dgProCode.Name = "dgProCode";
-            // 
-            // dgProName
-            // 
-            this.dgProName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgProName.HeaderText = "Product Name";
-            this.dgProName.Name = "dgProName";
-            // 
-            // dgQuantity
-            // 
-            this.dgQuantity.HeaderText = "Quantity";
-            this.dgQuantity.Name = "dgQuantity";
-            // 
-            // dgDate
-            // 
-            this.dgDate.HeaderText = "Date";
-            this.dgDate.Name = "dgDate";
-            // 
-            // dgStatus
-            // 
-            this.dgStatus.HeaderText = "Status";
-            this.dgStatus.Name = "dgStatus";
-            // 
             // Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(820, 504);
+            this.ClientSize = new System.Drawing.Size(815, 504);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label8);
